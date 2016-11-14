@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.mapper.ProfileMapper">
+	<select id="getProfileByprofile" resultType="Profile" parameterType="Profile">
+  		select * from Profile where id=#{id} and name=#{name}
+  	</select>
+  	
+  	<resultMap type="ProfilePage" id="ProfilePageMap">
+		<id column="page" property="page"/>
+		<result column="rowss" property="rows"/>
+		<result column="total" property="total"/>
+		<collection property="Profiles" column="id"  ofType="Profile">
+			<id column="id" property="id"/>
+			<result column="name" property="name"/>
+			<result column="birthday" property="birthday"/>
+			<result column="gender" property="gender"/>
+			<result column="career" property="career"/>
+			<result column="address" property="address"/>
+			<result column="mobile" property="mobile"/>
+			<result column="picPath" property="picPath"/>
+		</collection>
+	</resultMap>
+	<select id="getData" parameterType="ProfilePage" resultMap="ProfilePageMap">
+		select ${page} page,${rows} rowss,(select count(1) from profile) total,nn.* from
+		(select rownum rn,a.* from profile a where #{page}*#{rows}>=rownum) nn where rn>(#{page}-1)*#{rows} 
+	</select>
+	
+	<update id="updataProfile" parameterType="Profile">
+		update Profile
+		<set>
+			<if test="name!=null">
+				name=#{name},
+			</if>
+			<if test="birthday!=null">
+				birthday=#{birthday},
+			</if>
+			<if test="gender!=null">
+				gender=#{gender},
+			</if>
+			<if test="career!=null">
+				career=#{career},
+			</if>
+			<if test="address!=null">
+				address=#{address},
+			</if>
+			<choose>
+				<when test="picPath!=null">mobile=#{mobile},picPath=#{picPath}</when>
+				<otherwise>mobile=#{mobile}</otherwise>
+			</choose>
+
+		</set>
+		<if test="id!=0">
+			where id=#{id}
+		</if>
+	</update>
+	
+	<select id="getProfile" resultType="Profile" parameterType="Integer">
+  		select * from Profile where id=#{id}
+  	</select>
+  		
+  	<delete id="deleteprofile" parameterType="Integer">
+  		delete from Profile where id=#{id}
+  	</delete>
+</mapper>
