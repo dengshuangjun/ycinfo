@@ -33,7 +33,7 @@ public class ConnTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertNotNull("数据库连接失败!!!",con);
+		assertNotNull(con);
 	}
 	
 	@Test
@@ -44,7 +44,7 @@ public class ConnTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertNotNull("数据监控链接失败",con);
+		assertNotNull(con);
 	}
 	
 	
