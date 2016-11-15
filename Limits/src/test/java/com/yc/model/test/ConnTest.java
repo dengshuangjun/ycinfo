@@ -30,7 +30,6 @@ public class ConnTest {
 		try {
 			con=dataSource.getConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		assertNotNull(con);
