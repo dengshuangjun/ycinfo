@@ -17,11 +17,11 @@
 		<table>
 			<tr>
 				<td>用户名：</td>
-				<td><input type="text" name="id" value=""  style="border: 1px  solid  blue; border-radius:3px;" required="required" autofocus="autofocus" /></td>
+				<td><input type="text" name="uname" value=""  style="border: 1px  solid  blue; border-radius:3px;" required="required" autofocus="autofocus" /></td>
 			</tr>
 			<tr>
 				<td>密&nbsp;&nbsp;码：</td>
-				<td><input type="password" name="name" value=""   style="border: 1px  solid  blue; border-radius:3px;" required="required"/></td>
+				<td><input type="password" name="upwd" value=""   style="border: 1px  solid  blue; border-radius:3px;" required="required"/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="登  录"  style="background-color: gray; border: 0; width: 80px; font-size: 16px ;margin-top: 10px"/></td>
