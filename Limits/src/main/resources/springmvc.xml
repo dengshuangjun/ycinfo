@@ -28,7 +28,7 @@
 	<context:property-placeholder location="classpath:db.properties" />
 
 	<!-- 配置视图解析器 -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
 		<!--  prefix：前缀；suffix：后缀-->
 		<property name="prefix" value="/"></property>
 		<property name="suffix" value=".jsp"></property>
