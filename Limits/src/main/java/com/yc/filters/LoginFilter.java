@@ -25,8 +25,7 @@ public class LoginFilter implements Filter {
 			FilterChain arg2) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) arg0;
 		HttpServletResponse response = (HttpServletResponse) arg1;
-		if (request.getAttribute(SessionAttributeKey.LOGIN_ADMIN) == null) {
-			request.setAttribute("errorMsg", "用户名或密码错误...");
+		if (request.getSession().getAttribute(SessionAttributeKey.LOGIN_ADMIN) == null) {
 			String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
 			response.getWriter().print("<script>location.href='"+path+"/index.jsp'</script>");
 			return;

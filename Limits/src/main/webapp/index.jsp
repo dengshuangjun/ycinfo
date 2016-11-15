@@ -20,7 +20,7 @@
 				<td><input type="text" name="uname" value=""  style="border: 1px  solid  blue; border-radius:3px;" required="required" autofocus="autofocus" /></td>
 			</tr>
 			<tr>
-				<td>密&nbsp;&nbsp;码：</td>
+				<td>密&nbsp;码：</td>
 				<td><input type="password" name="upwd" value=""   style="border: 1px  solid  blue; border-radius:3px;" required="required"/></td>
 			</tr>
 			<tr>
