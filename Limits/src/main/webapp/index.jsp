@@ -12,7 +12,7 @@
 	
 </head>
 <body >
-	<div style="background-color: blue; ">
+	<div style="background-color: #6F71C9; ">
 	<form action="front/login.do" method="post" style="text-align: center; margin: 180px auto; width: 360px; padding: 20px 0;">
 		<table>
 			<tr>
