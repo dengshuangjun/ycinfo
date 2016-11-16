@@ -17,15 +17,10 @@ public class UserHandler{
 	
 	@Autowired
 	private Userservice userservice;
-
+	
 	@RequestMapping("login.do")
 	public String Login(User user, Model model) {
 		System.out.println("登陆");
-		if(user.getUid()!=0){
-			model.addAttribute(SessionAttributeKey.LOGIN_ADMIN, user);
-			System.out.println(user);
-			return "page/list";
-		}else{
 			user = userservice.getUser(user.getUname(), user.getUpwd());
 			if (user!=null) {
 				model.addAttribute(SessionAttributeKey.LOGIN_ADMIN, user);
@@ -35,6 +30,5 @@ public class UserHandler{
 				model.addAttribute("errorMsg", "用户名或密码错误...");
 				return "index";
 			}
-		}
 	}
 }
