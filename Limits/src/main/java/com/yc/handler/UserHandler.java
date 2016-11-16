@@ -15,6 +15,7 @@ public class UserHandler extends BasicHandler{
 	
 	   @RequestMapping("login.do")
 		public String Login(User user,Model model){
+		   System.out.println("登陆");
 		   if(user.getUid()!=0){
 			   model.addAttribute(SessionAttributeKey.LOGIN_ADMIN, user);
 			   System.out.println(user);

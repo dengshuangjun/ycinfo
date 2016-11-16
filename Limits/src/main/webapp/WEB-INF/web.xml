@@ -29,7 +29,18 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 		<filter-name>encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	<filter>
+			<filter-name>LoginFilter</filter-name>
+			<filter-class>com.yc.filters.LoginFilter</filter-class>
+			<init-param>
+			<param-name>MainPage</param-name>
+			<param-value>/index.jsp</param-value>
+		</init-param>
+	</filter>
+		<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/page/*</url-pattern>
+	</filter-mapping>
 	<!--  springmvc的核心配置-->
 	<servlet>
 		<servlet-name>DispatcherServlet</servlet-name>
@@ -68,4 +79,8 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	<error-page>
+			<error-code>404</error-code>
+			<location>/404.jsp</location>
+	</error-page>
 </web-app>
