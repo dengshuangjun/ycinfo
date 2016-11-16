@@ -13,7 +13,7 @@
 </head>
 <body >
 	<div style="background-color: #6F71C9; ">
-	<form action="front/login.do" method="post" style="text-align: center; margin: 180px auto; width: 360px; padding: 20px 0;">
+	<form action="front/login.do" method="post" style="text-align: center; margin: 180px auto 0 auto; width: 360px; padding: 20px 0 0 0;">
 		<table>
 			<tr>
 				<td>用户名：</td>
@@ -30,8 +30,7 @@
 	</form>
 	<div class="input-group">
 		<!--   显示登陆出错信息 -->
-		<p class="input-group-btn"
-			style="text-align: center; color: red;">${errorMsg}</p>
+		<p  style="text-align: center; color: red; padding-bottom: 20px ; margin-left: -100px;">${errorMsg}</p>
 	</div>
 	</div>
 </body>
