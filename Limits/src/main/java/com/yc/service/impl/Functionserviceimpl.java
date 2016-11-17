@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.yc.entity.Function;
 import com.yc.mapper.FunctionMapper;
-import com.yc.mapper.RoleMapper;
 import com.yc.service.Functionservice;
 @Service("functionservice")
 public class Functionserviceimpl implements Functionservice {
@@ -16,26 +15,17 @@ public class Functionserviceimpl implements Functionservice {
 	private FunctionMapper functionMapper;
 	
 	@Override
-	public List<Function> findFunctionsById(String rName) {
-		return functionMapper.findFunctionsById(rName);
+	public List<Function> findFunctionsByrName(String rName) {
+		return functionMapper.findFunctionsByrName(rName);
 	}
 	@Override
-	public int updateUrl(int id, String url) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(Function function) {
+		return functionMapper.update(function);
 	}
 
 	@Override
-	public int deleteById(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteById(int fid) {
+		return functionMapper.deleteById(fid);
 	}
-
-	@Override
-	public List<Function> findALlFunctions() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }

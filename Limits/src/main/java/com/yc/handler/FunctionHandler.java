@@ -21,7 +21,7 @@ public class FunctionHandler{
 	@RequestMapping("/Functions.do")
 	@ResponseBody
 	public List<Function> Functions(String rName, Model model) {
-		List<Function> functions=functionservice.findFunctionsById(rName);		
+		List<Function> functions=functionservice.findFunctionsByrName(rName);		
 		return functions;		
 	}
 }

@@ -4,8 +4,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.yc.mapper.FunctionMapper">
-		<cache />
-		<select id="findFunctionsById" parameterType="String" resultType="Function">
-			select * from auth_function where parent_id=(select rId from auth_role where rName=#{rName});
-		</select>
+	<cache />
+	<select id="findFunctionsByrName" parameterType="String" resultType="Function">
+		select fid id,fname text,parent_id,url,serialNum,accordion from auth_function where parent_id=(select rId from auth_role where rName=#{rName});
+	</select>
+	
+	<update id="update" parameterType="Function">
+		update auth_function
+		<set>
+			<if test="fname!=null">
+				fname=#{fname},
+			</if>
+			<if test="parent_id!=null">
+				parent_id=#{parent_id},
+			</if>
+			<if test="url!=null">
+				url=#{url},
+			</if>
+			<if test="serial_num!=null">
+				serial_num=#{serial_num},
+			</if>	
+			<if test="accordion!=null">
+				accordion=#{accordion}
+			</if>		
+		</set>
+		<if test="fid!=null">
+			where fid=#{fid}
+		</if>
+	</update>
+	
+	<delete id="deleteById" parameterType="int">
+  		delete from auth_function where fid=#{fid}
+  	</delete>
 </mapper>

@@ -12,29 +12,19 @@ public interface Functionservice{
      * @param rName
      * @return
      */
-    List<Function> findFunctionsById(String rName);
+    List<Function> findFunctionsByrName(String rName);
 
     /**
-     * 根据id更新Url
-     * @param id
-     * @param url
+     * 根据id更新function
+     * @param function
      */
-    int updateUrl(int id,String url);
+    int update(Function function);
        
 
     /**
-     * 根据id删除functions
+     * 根据id删除function
      * @param id
      */
-    int deleteById(int id);
-
-    /**
-     * 查询全部功能
-     * @return 返回功能链表
-     */
-    List<Function> findALlFunctions();
-
-
-    
-
+    int deleteById(int fid);
+ 
 }

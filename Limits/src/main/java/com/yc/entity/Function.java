@@ -10,24 +10,24 @@ public class Function implements Serializable{
 	 */
 	private static final long serialVersionUID = -8889995540070510045L;
 	
-	private int fid;
-	private String fname;
+	private int id;
+	private String text;
 	private int parent_id;
 	private String url;
 	private Integer serialNum;
 	private Integer accordion;
 	
 	public int getFid() {
-		return fid;
+		return id;
 	}
 	public void setFid(int fid) {
-		this.fid = fid;
+		this.id = fid;
 	}
 	public String getFname() {
-		return fname;
+		return text;
 	}
 	public void setFname(String fname) {
-		this.fname = fname;
+		this.text = fname;
 	}
 	public int getParent_id() {
 		return parent_id;
@@ -55,7 +55,7 @@ public class Function implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Function [fid=" + fid + ", fname=" + fname + ", parent_id="
+		return "Function [fid=" + id + ", fname=" + text + ", parent_id="
 				+ parent_id + ", url=" + url + ", serialNum=" + serialNum
 				+ ", accordion=" + accordion + "]";
 	}
