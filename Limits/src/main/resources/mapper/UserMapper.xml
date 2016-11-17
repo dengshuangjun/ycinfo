@@ -23,5 +23,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from auth_user where uid=#{uid}
 	</select>
 	
+	<update id="update" parameterType="user">
+		update auth_user
+		<set>
+			<if test="uname!=null">
+				uname=#{uname},
+			</if>
+			<if test="upwd!=null">
+				upwd=#{upwd},
+			</if>
+			<if test="registerTime!=null">
+				gender=#{gender},
+			</if>
+			<if test="career!=null">
+				career=#{career},
+			</if>
+			<if test="address!=null">
+				address=#{address},
+			</if>
+			<choose>
+				<when test="picPath!=null">mobile=#{mobile},picPath=#{picPath}</when>
+				<otherwise>mobile=#{mobile}</otherwise>
+			</choose>
+
+		</set>
+		<if test="id!=0">
+			where id=#{id}
+		</if>
+	</update>
 	
+	<delete id="deleteById" parameterType="int">
+  		delete from auth_user where uid=#{uid}
+  	</delete>
 </mapper>
