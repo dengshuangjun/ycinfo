@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yc.entity.TempPage;
 import com.yc.entity.User;
 import com.yc.mapper.UserMapper;
 import com.yc.service.Userservice;
@@ -20,32 +21,29 @@ public class Userserviceimpl implements Userservice {
 
 	@Override
 	public int save(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userMapper.save(user);
 	}
 
 	@Override
 	public int deleteById(int uid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userMapper.deleteById(uid);
 	}
 
 	@Override
 	public int update(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return userMapper.update(user);
 	}
 
 	@Override
-	public User fingById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User fingById(int uid) {
+		return userMapper.findById(uid);
 	}
 
 	@Override
-	public List<User> findPage(int page, int size) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> findPage(int page,int size) {
+		return userMapper.findPage(page,size);
 	}
+
+
 
 }
