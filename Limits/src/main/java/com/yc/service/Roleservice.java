@@ -10,7 +10,8 @@ public interface Roleservice{
      * @param id id
      * @return
      */
-   Role findRoleById(int id);
+	List<Role> findRolesById(int uid);
+
  
 
     /**
@@ -34,12 +35,9 @@ public interface Roleservice{
     int updateRole(Role role);
      
 
-    /**
-     * 根据分页查询Roles
-     * @param page 页码
-     * @param size 每页的大小
-     * @return 返回Role的链表
-     */
-    List<Role> findRolesByPages(int page,int size);
+  
+
+
+
 
 }
