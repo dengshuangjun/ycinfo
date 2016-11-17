@@ -17,12 +17,60 @@
  			
 	<body class="easyui-layout">
 		<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">north region</div>
-		<div data-options="region:'west',split:true,title:'West'" style="width:150px;padding:10px;">west content</div>
+		<div data-options="region:'west',split:true,title:'West'" style="width:150px;">
+				<div id="accordions" >
+				<!-- <div title="Title1" style="padding:10px;">
+					content1
+				</div>
+				<div title="Title2" style="padding:10px;">
+					content2
+				</div>
+				<div title="Title3" style="padding:10px">
+					content3
+				</div> -->
+				<!-- <div style="padding:10px" data-options="selected:true" >
+				
+				</div> -->
+			</div>
+		</div>
+		<div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>
 		<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;">
 					<p style="text-align: center ;">&copy;版权所有：源辰信息有限公司</p>
 		</div>
 		<div data-options="region:'center',title:'Center'">
 				
 		</div>
+		<script type="text/javascript" >
+		$(function(){
+			$.ajax({  
+	            type: 'POST',
+	            dataType: "json",
+	            url:'/list/Roles.do',
+	            success: function(data){
+	                $.each(data,function(i,n){
+	                    $('#accordions').accordion('add',{
+	                        title: n.rName,
+	                        selected: false,
+	                        content:'<div style="padding:10px"><ul name="'+n.rName+'"></ul></div>'
+	                    });
+	                });
+	                $('#accordions').accordion('add',{
+                        selected: ture,
+                        content:'<div style="padding:10px"></div>',
+                    });
+	            }
+	        }); 
+			$('#accordions').accordion({
+	            onSelect: function(title,index){
+	                $("ul[name='"+title+"']").tree({
+	                    url: 'menu/getModules?menuName='+title,
+	                });
+	                alert(title);
+	            }
+	        });
+		});
+	
+				
+		</script>
 	</body>
 </html>
