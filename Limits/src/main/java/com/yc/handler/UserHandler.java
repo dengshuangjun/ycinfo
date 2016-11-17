@@ -26,6 +26,10 @@ public class UserHandler{
 	@RequestMapping("login.do")
 	public String Login(User user, Model model) {
 		System.out.println("登陆");
+		if(user.getUname()==null&&user.getUpwd()==null){
+			model.addAttribute("errorMsg", "用户名或密码不能为空...");
+			return "index";
+		}
 			user = userservice.getUser(user.getUname(), user.getUpwd());
 			if (user!=null) {
 				model.addAttribute(SessionAttributeKey.LOGIN_ADMIN, user);
