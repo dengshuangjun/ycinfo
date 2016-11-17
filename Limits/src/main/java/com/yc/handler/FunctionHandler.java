@@ -12,7 +12,7 @@ import com.yc.entity.Function;
 import com.yc.service.Functionservice;
 
 @Controller
-@RequestMapping("/list")
+@RequestMapping("/function")
 public class FunctionHandler{
 	
 	@Autowired
