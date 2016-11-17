@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.yc.service.Roleservice;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring.xml")
 public class ConnTest {
@@ -23,6 +25,9 @@ public class ConnTest {
 	
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
+	
+	@Autowired
+	private Roleservice roleservice;
 	
 	@Test
 	public void testConn() {
@@ -46,6 +51,9 @@ public class ConnTest {
 		assertNotNull(con);
 	}
 	
-	
+	@Test
+	public void TestRoles(){
+		System.out.println(roleservice.findRolesById(1));
+	}
 
 }

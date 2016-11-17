@@ -2,15 +2,22 @@ package com.yc.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.yc.entity.Role;
+import com.yc.mapper.RoleMapper;
+import com.yc.mapper.UserMapper;
 import com.yc.service.Roleservice;
-
+@Service("roleservice")
 public class Roleserviceimpl implements Roleservice {
-
+	@Autowired
+	private RoleMapper roleMapper;
+	
+	
 	@Override
-	public Role findRoleById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Role> findRolesById(int uid) {
+		return roleMapper.findRolesById(uid);
 	}
 
 	@Override
@@ -31,10 +38,7 @@ public class Roleserviceimpl implements Roleservice {
 		return 0;
 	}
 
-	@Override
-	public List<Role> findRolesByPages(int page, int size) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+
 
 }
