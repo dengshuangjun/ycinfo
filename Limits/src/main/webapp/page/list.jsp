@@ -17,7 +17,20 @@
  			
 	<body class="easyui-layout">
 		<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">north region</div>
-		<div data-options="region:'west',split:true,title:'West'" style="width:150px;padding:10px;">west content</div>
+		<div data-options="region:'west',split:true,title:'导航'" style="width:180px;height:450px; id="aa" class="easyui-accordion"">
+			<%-- <c:forEach items="${roles }" var="item">
+        		<div title=${roles.rname }>  
+		        	<ul class="easyui-tree" id="menu-tree">
+						
+					</ul>  
+		    	</div> 
+        	</c:forEach> --%>
+        	<div title="昨天">  
+		        	<ul class="easyui-tree" id="menu-tree">
+						
+					</ul>  
+		    	</div>
+		</div>
 		<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;">
 					<p style="text-align: center ;">&copy;版权所有：源辰信息有限公司</p>
 		</div>
