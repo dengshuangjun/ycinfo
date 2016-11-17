@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yc.utils.SessionAttributeKey;
 
 public class LoginFilter implements Filter {
-
+	private static String mainPage="/index.jsp";
 	@Override
 	public void destroy() {
 
@@ -25,18 +25,18 @@ public class LoginFilter implements Filter {
 			FilterChain arg2) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) arg0;
 		HttpServletResponse response = (HttpServletResponse) arg1;
-		if (request.getSession().getAttribute(SessionAttributeKey.LOGIN_ADMIN) == null) {
+		System.out.println("过滤器");
 			String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
-			response.getWriter().print("<script>location.href='"+path+"/index.jsp'</script>");
+			response.getWriter().print("<script>location.href='"+path+mainPage+"'</script>");
 			return;
-		} else {
-			arg2.doFilter(arg0, arg1);
-		}
+		
+	
+		
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-
+		mainPage=arg0.getInitParameter("MainPage");
 	}
 
 }

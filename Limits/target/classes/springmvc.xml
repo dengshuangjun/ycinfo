@@ -53,10 +53,11 @@
 		-->
 	<mvc:interceptors>
 		<!--配置自定义的拦截器	-->
-		<mvc:interceptor>
-			<mvc:mapping path="/page/**"/>
-			<bean class="com.yc.interceptors.LoginInterceptors"/>
-		</mvc:interceptor>
+				<mvc:interceptor>
+				<mvc:mapping path="/**"/>
+				<mvc:exclude-mapping path="/front/login.do"/>
+				<bean class="com.yc.interceptors.LoginInterceptors"/>
+				</mvc:interceptor>
 	</mvc:interceptors>
 
 	<!-- 默认静态资源处理请求 -->

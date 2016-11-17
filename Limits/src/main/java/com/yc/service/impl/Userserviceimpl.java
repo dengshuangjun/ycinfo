@@ -2,15 +2,20 @@ package com.yc.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.yc.entity.User;
+import com.yc.mapper.UserMapper;
 import com.yc.service.Userservice;
-
+@Service("userservice")
 public class Userserviceimpl implements Userservice {
-
+	
+	@Autowired
+	private UserMapper userMapper;
 	@Override
 	public User getUser(String name, String pwd) {
-		// TODO Auto-generated method stub
-		return null;
+		return 	userMapper.login(name,pwd);
 	}
 
 	@Override

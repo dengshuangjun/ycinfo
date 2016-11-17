@@ -32,8 +32,8 @@
 
 	<!-- 配制mybatis的会话工厂对象 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:dataSource-ref="dataSource" /><!-- p:typeAliasesPackage="com.yc.entity" 
-		p:mapperLocations="classpath:mapper/*Mapper.xml" /> -->
+		p:dataSource-ref="dataSource"  p:typeAliasesPackage="com.yc.entity" 
+		p:mapperLocations="classpath:mapper/*Mapper.xml" />
 
 	<!-- 配制映射接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"

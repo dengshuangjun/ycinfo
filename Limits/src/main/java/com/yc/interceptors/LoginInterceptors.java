@@ -12,9 +12,10 @@ public class LoginInterceptors implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
 			Object arg2) throws Exception {
-		if(request.getSession().getAttribute(SessionAttributeKey.LOGIN_ADMIN)!=null){
+		System.out.println(request.getSession().getAttribute(SessionAttributeKey.LOGIN_ADMIN));
+		if(request.getSession().getAttribute(SessionAttributeKey.LOGIN_ADMIN)==null){
 			String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
-			response.getWriter().print("<script>location.href='"+path+"/page/list.jsp'</script>");
+			response.getWriter().print("<script>location.href='"+path+"/index.jsp'</script>");
 			return false;
 		}
 		return true;
