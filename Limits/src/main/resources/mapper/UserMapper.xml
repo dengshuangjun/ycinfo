@@ -5,8 +5,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 
 <mapper namespace="com.yc.mapper.UserMapper">
-		<cache />
-		<select id="login" parameterType="String" resultType="User">
-			select * from auth_user where uname=#{ 0} and upwd=#{1}
-		</select>
+	<cache />
+	<select id="login" parameterType="String" resultType="User">
+		select * from auth_user where uname=#{0} and upwd=#{1}
+	</select>
+	
+	<select id="findPage" parameterType="int" resultType="User">
+		select uname,registerTime,updateTime from auth_user limit #{0},#{1}
+	</select>
+	
+	
+	<insert id="save" parameterType="User" >
+	    insert into auth_user(uid,uname,upwd,registerTime,updateTime) values(null,#{uname},#{upwd},str_to_date('#{registerTime}','%Y-%m-%d'),null)
+   </insert>
+	
+	<select id="findById" parameterType="int" resultType="User">
+		select * from auth_user where uid=#{uid}
+	</select>
+	
+	
 </mapper>

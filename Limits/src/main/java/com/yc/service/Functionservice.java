@@ -7,6 +7,12 @@ import java.util.List;
 
 
 public interface Functionservice{
+	/**
+     * 根据rname去查找功能
+     * @param rName
+     * @return
+     */
+    List<Function> findFunctionsById(String rName);
 
     /**
      * 根据id更新Url
@@ -14,16 +20,6 @@ public interface Functionservice{
      * @param url
      */
     int updateUrl(int id,String url);
-       
-
-    /**
-     * 根据parentId去查找功能 分页
-     * @param page
-     * @param size
-     * @param parentId
-     * @return
-     */
-    List<Function> findFunctions(int page,int size,int parentId);
        
 
     /**
@@ -37,6 +33,8 @@ public interface Functionservice{
      * @return 返回功能链表
      */
     List<Function> findALlFunctions();
+
+
     
 
 }

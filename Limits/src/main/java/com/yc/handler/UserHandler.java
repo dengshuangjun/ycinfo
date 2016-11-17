@@ -1,9 +1,13 @@
 package com.yc.handler;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yc.entity.User;
@@ -18,6 +22,7 @@ public class UserHandler{
 	@Autowired
 	private Userservice userservice;
 	
+	//验证登入
 	@RequestMapping("login.do")
 	public String Login(User user, Model model) {
 		System.out.println("登陆");
@@ -30,5 +35,46 @@ public class UserHandler{
 				model.addAttribute("errorMsg", "用户名或密码错误...");
 				return "index";
 			}
+	}
+	
+	//获取分页信息
+	@RequestMapping("findUser.do")
+	@ResponseBody
+	public List<User> findUser(int page,int size,Model model) {
+		List<User> users = userservice.findPage(page,size);
+		return users;	
+	}
+	
+	//添加数据
+	@RequestMapping("addUser.do")
+	@ResponseBody
+	public int addUser(User user) {
+		int result = userservice.save(user);
+		return result;	
+	}
+	
+	//删除数据
+	@ResponseBody
+	@RequestMapping("removeUser")
+	public int removeUser(int uid){
+		System.out.println("要删除的id"+uid);
+		int result=userservice.deleteById(uid);
+		return result;
+	}
+	
+	//修改数据
+	@ResponseBody
+	@RequestMapping(value= "/updataUser",method=RequestMethod.POST)
+	public int updataUser(User user) {
+		int result=userservice.update(user);
+		return result;
+	}
+	
+	//获取某一个用户
+	@ResponseBody
+	@RequestMapping(value= "/fingById",method=RequestMethod.POST)
+	public User fingById(int uid) {
+		User user=userservice.fingById(uid);
+		return user;
 	}
 }
