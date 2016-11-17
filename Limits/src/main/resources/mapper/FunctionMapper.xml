@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.yc.mapper.FunctionMapper">
 	<cache />
 	<select id="findFunctionsByrName" parameterType="String" resultType="Function">
-		select fid id,fname text,parent_id,url,serialNum,accordion from auth_function where parent_id=(select rId from auth_role where rName=#{rName});
+		select * from auth_function where parent_id=(select rId from auth_role where rName=#{rName});
 	</select>
 	
 	<update id="update" parameterType="Function">
