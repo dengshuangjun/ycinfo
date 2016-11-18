@@ -6,7 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.yc.mapper.RoleMapper">
 		<cache />
-		<select id="findRolesById" parameterType="int" resultType="Role">
-			select * from auth_role where rid in (select role_id from auth_user_role where user_id=#{uid})
+		<select id="findRolesById" parameterType="int" resultType="Function">
+			select b.* from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) b where b.accordion=
+			(select min(a.accordion) from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) a)
 		</select>
 </mapper>

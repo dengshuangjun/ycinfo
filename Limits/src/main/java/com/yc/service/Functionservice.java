@@ -12,7 +12,7 @@ public interface Functionservice{
      * @param rName
      * @return
      */
-    List<Function> findFunctionsById(String rName);
+    List<Function> findFunctionsById(String rName,int uid);
 
     /**
      * 根据id更新Url
