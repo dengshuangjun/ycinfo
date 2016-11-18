@@ -12,7 +12,8 @@ public interface Functionservice{
      * @param rName
      * @return
      */
-    List<Function> findFunctionsByrName(String rName);
+
+    List<Function> findFunctionsById(String rName,int uid);
 
     /**
      * 根据id更新function

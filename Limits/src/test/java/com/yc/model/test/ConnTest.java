@@ -66,7 +66,8 @@ public class ConnTest {
 	
 	@Test
 	public void TestFunctions(){
-		System.out.println(functionservice.findFunctionsByrName("安全权限"));
+
+		System.out.println(functionservice.findFunctionsById("安全权限",2));
 	}
 	
 	@Test

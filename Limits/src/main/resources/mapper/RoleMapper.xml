@@ -4,8 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.yc.mapper.RoleMapper">
-	<cache />
-	<select id="findRolesById" parameterType="int" resultType="Role">
-		select * from auth_role where rid in (select role_id from auth_user_role where user_id=#{uid})
-	</select>
+
+		<cache />
+		<select id="findRolesById" parameterType="int" resultType="Function">
+			select b.* from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) b where b.accordion=
+			(select min(a.accordion) from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) a)
+		</select>
 </mapper>

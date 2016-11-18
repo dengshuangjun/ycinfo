@@ -22,9 +22,9 @@
 	            success : function(data) {  
 	            	 $.each(data, function(i, n) {//加载父类节点即一级菜单  
 		                    	 $('#accordions').accordion('add', {  
-			                            title : n.rname,  
+			                            title : n.fname,  
 			                            selected : false,  
-			                            content : '<div style="padding:10px"><ul name="'+n.rname+'"></ul></div>',  
+			                            content : '<div style="padding:10px"><ul name="'+n.fname+'"></ul></div>',  
 			                        });  
 		                    } );
 	            	 $('#accordions').accordion('add', {  
@@ -37,10 +37,17 @@
 	            onSelect: function(title,index){
 	            	if(title==""||title==undefined ){
 	            	}else{
-	            		$('ul[name="'+title+'"]').tree({
-	            			method:'GET',
-		                    url: '/Limits/list/Function.do?rid='+title
-		                }); 
+	            		try {
+	            			$('ul[name="'+title+'"]').tree('getRoots');
+						} catch (e) {
+							$('ul[name="'+title+'"]').tree({
+		            			method:'GET',
+			                    url: '/Limits/function/Functions.do?rName='+title,
+			                    onClick: function(node){
+			                		alert(node.id); 
+			                	}
+			                }); 
+						}
 	            	}
 	            }
 	        });

@@ -20,10 +20,16 @@ public class Function implements Serializable{
 	public int getFid() {
 		return fid;
 	}
+	public int getid() {
+		return fid;
+	}
 	public void setFid(int fid) {
 		this.fid = fid;
 	}
 	public String getFname() {
+		return fname;
+	}
+	public String getText() {
 		return fname;
 	}
 	public void setFname(String fname) {

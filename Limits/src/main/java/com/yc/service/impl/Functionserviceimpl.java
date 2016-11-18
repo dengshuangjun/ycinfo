@@ -15,8 +15,8 @@ public class Functionserviceimpl implements Functionservice {
 	private FunctionMapper functionMapper;
 	
 	@Override
-	public List<Function> findFunctionsByrName(String rName) {
-		return functionMapper.findFunctionsByrName(rName);
+	public List<Function> findFunctionsById(String rName,int uid) {
+		return functionMapper.findFunctionsById(rName,uid);
 	}
 	@Override
 	public int update(Function function) {

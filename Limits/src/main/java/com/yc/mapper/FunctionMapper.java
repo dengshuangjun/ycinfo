@@ -6,10 +6,11 @@ import com.yc.entity.Function;
 
 public interface FunctionMapper {
 
-	List<Function> findFunctionsByrName(String rName);
 
 	int update(Function function);
 
 	int deleteById(int fid);
+	
+	List<Function> findFunctionsById(String rName,int uid);
 
 }
