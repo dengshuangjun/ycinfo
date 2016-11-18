@@ -13,11 +13,6 @@ public class UserRoleserviceimpl implements UserRoleservice {
 		return 0;
 	}
 
-	@Override
-	public int saveUserRole(UserRole userRole) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public UserRole findUserRoleById(int id) {
@@ -35,6 +30,20 @@ public class UserRoleserviceimpl implements UserRoleservice {
 	public List<UserRole> findUserRoleByUserId(int uid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public boolean saveUserRole(UserRole userRole) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean saveUserRole(UserRole userRole, int[] role_id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

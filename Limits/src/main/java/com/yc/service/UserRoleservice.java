@@ -12,11 +12,6 @@ public interface UserRoleservice {
      */
     int updateUserRole(UserRole userRole);
 
-    /**
-     * 保存UserRole对象
-     * @param userRole
-     */
-    int saveUserRole(UserRole userRole);
 
     /**
      * 根据id查找UserRole对象
@@ -40,10 +35,16 @@ public interface UserRoleservice {
      * @return
      */
     List<UserRole> findUserRoleByUserId(int uid);
+    
+    /**
+     * 保存UserRole对象
+     * @param userRole
+     */
+    boolean saveUserRole(UserRole userRole);
 
     /**
      * 批量保存用户角色对应关系
      * @param userRoles 用户角色对应关系集合
      */
-
+    boolean saveUserRole(UserRole userRole,int[] role_id);
 }

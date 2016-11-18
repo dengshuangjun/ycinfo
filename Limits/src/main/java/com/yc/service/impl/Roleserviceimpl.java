@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.yc.entity.Role;
 import com.yc.mapper.RoleMapper;
-import com.yc.mapper.UserMapper;
 import com.yc.service.Roleservice;
 @Service("roleservice")
 public class Roleserviceimpl implements Roleservice {
@@ -22,23 +21,17 @@ public class Roleserviceimpl implements Roleservice {
 
 	@Override
 	public int saveRole(Role role) {
-		// TODO Auto-generated method stub
-		return 0;
+		return roleMapper.saveRole(role);
 	}
 
 	@Override
 	public int deleteRoleById(int rid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return roleMapper.deleteRoleById(rid);
 	}
 
 	@Override
 	public int updateRole(Role role) {
-		// TODO Auto-generated method stub
-		return 0;
+		return roleMapper.updateRole(role);
 	}
-
-
-
 
 }

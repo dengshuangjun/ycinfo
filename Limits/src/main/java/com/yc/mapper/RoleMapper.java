@@ -8,4 +8,10 @@ public interface RoleMapper {
 
 	List<Role> findRolesById(int uid);
 
+	int saveRole(Role role);
+
+	int deleteRoleById(int rid);
+
+	int updateRole(Role role);
+
 }
