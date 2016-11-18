@@ -13,7 +13,7 @@ public interface Functionservice{
      * @return
      */
 
-    List<Function> findFunctionsById(String rName,int uid);
+    List<Function> findnextFunction(String rName,int uid);
 
     /**
      * 根据id更新function

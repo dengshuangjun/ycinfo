@@ -21,12 +21,13 @@ public class FunctionHandler{
 	@Autowired
 	private Functionservice functionservice;
 	
+	
+	
 	@RequestMapping("/Functions.do")
 	@ResponseBody
 	public List<Function> Functions(User user,String rName, Model model) {
 		System.out.println(rName);
-		List<Function> functions=functionservice.findFunctionsById(rName,user.getUid());
-	
+		List<Function> functions=functionservice.findnextFunction(rName,user.getUid());	
 		return functions;		
 	}
 }

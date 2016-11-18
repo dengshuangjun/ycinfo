@@ -11,6 +11,6 @@ public interface FunctionMapper {
 
 	int deleteById(int fid);
 	
-	List<Function> findFunctionsById(String rName,int uid);
+	List<Function> findnextFunction(String rName,int uid);
 
 }

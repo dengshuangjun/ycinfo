@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.yc.mapper.FunctionMapper">
 	<cache />
-	<select id="findFunctionsByrName" parameterType="String" resultType="Function">
-		select * from auth_function where parent_id=(select rId from auth_role where rName=#{rName});
+	<select id="findnextFunction" resultType="Function">
+		select * from auth_function where parent_id=(select fid from auth_function where fname=#{0}) and fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{1}))
 	</select>
 	
 	<update id="update" parameterType="Function">
