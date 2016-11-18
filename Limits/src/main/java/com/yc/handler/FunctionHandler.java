@@ -16,7 +16,7 @@ import com.yc.service.Functionservice;
 @Controller
 @RequestMapping("/function")
 @SessionAttributes("user")
-public class FunctionHandler{
+public class FunctionHandler extends TreeHandler{
 	
 	@Autowired
 	private Functionservice functionservice;

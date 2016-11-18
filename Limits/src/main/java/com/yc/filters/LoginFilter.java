@@ -26,9 +26,14 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) arg0;
 		HttpServletResponse response = (HttpServletResponse) arg1;
 		System.out.println("过滤器");
+		if(request.getSession().getAttribute(SessionAttributeKey.LOGIN_ADMIN)==null){
 			String path=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
 			response.getWriter().print("<script>location.href='"+path+mainPage+"'</script>");
 			return;
+		}else{
+			arg2.doFilter(arg0, arg1);
+		}
+			
 		
 	
 		

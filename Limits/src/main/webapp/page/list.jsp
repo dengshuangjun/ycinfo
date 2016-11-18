@@ -33,6 +33,7 @@
                      });     
 	            }  
 	        });
+	        /****以上加载一级 ****/
 	        $('#accordions').accordion({
 	            onSelect: function(title,index){
 	            	if(title==""||title==undefined ){
@@ -44,7 +45,15 @@
 		            			method:'GET',
 			                    url: '/Limits/function/Functions.do?rName='+title,
 			                    onClick: function(node){
-			                		alert(node.id); 
+			                		//alert(node.text); 
+			                		/* 点击子节点中间区域加载刷新 */
+			                		$('#center_content').panel({ 
+			                			loadingMessage:'数据加载中...',
+			                			 fit:true,
+			                			  title: node.text,
+			                			  content:'<table id="userDataGrid"></table>',
+			                			  href:node.url
+			                			});  
 			                	}
 			                }); 
 						}
@@ -68,7 +77,7 @@
 		<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;">
 					<p style="text-align: center ;">&copy;版权所有：源辰信息有限公司</p>
 		</div>
-		<div data-options="region:'center',title:'Center'">
+		<div id="center_content" data-options="region:'center',title:'Center'">
 				
 		</div>
 

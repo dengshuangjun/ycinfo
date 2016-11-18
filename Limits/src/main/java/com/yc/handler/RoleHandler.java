@@ -16,7 +16,7 @@ import com.yc.service.Roleservice;
 @Controller
 @RequestMapping("/list")
 @SessionAttributes("user")
-public class RoleHandler{
+public class RoleHandler extends TreeHandler{
 	
 	@Autowired
 	private Roleservice roleservice;
