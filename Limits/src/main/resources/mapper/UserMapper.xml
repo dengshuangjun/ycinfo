@@ -9,9 +9,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login" parameterType="String" resultType="User">
 		select * from auth_user where uname=#{0} and upwd=#{1}
 	</select>
+	<resultMap type="TempPage"  id="TempPageMap" >
+			<id column="total" property="total"/>
+			<collection property="rows" column="uid"  ofType="User">
+					<id column="uid" property="uid"/>
+					<result column="uname" property="uname"/>
+					<result column="registertime" property="registertime"/>
+					<result column="updatetime" property="updatetime"/>
+			</collection>
+	</resultMap>
 	
-	<select id="findPage" parameterType="int" resultType="User">
-		select uname,registerTime,updateTime from auth_user limit #{0},#{1}
+	<select id="findPage" parameterType="int" resultMap="TempPageMap">
+		
+		select (select count(1) from auth_user) total, uid,uname,registerTime,updateTime from auth_user limit #{0},#{1}
 	</select>
 	
 	

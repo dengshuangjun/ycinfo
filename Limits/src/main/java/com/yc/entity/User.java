@@ -30,6 +30,9 @@ public class User implements Serializable {
 		this.uname = uname;
 	}
 	public String getUpwd() {
+		if(upwd==null){
+			return "";
+		}
 		return upwd;
 	}
 	public void setUpwd(String upwd) {
@@ -42,6 +45,9 @@ public class User implements Serializable {
 		this.registertime = registertime;
 	}
 	public String getUpdatetime() {
+		if(updatetime==null){
+			return "未修改过";
+		}
 		return updatetime;
 	}
 	public void setUpdatetime(String updatetime) {

@@ -5,9 +5,6 @@ import java.io.Serializable;
 
 public class Function implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8889995540070510045L;
 	
 	private int fid;

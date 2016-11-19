@@ -36,4 +36,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteById" parameterType="int">
   		delete from auth_function where fid=#{fid}
   	</delete>
+  	
+  	<resultMap type="FunctionTree" id="FunctionTreeMap" >
+  			<id property="id"  column="fid"/>
+  			<result property="text" column="fname"/>
+  			<collection property="children"  column="fid" javaType="FunctionT">
+  						<id property="fid"  column="fid"/>
+  						<result property="fname" column="fname"/>
+  						<collection property="children"  column="fid" javaType="FunctionT">
+  									<id property="fid"  column="fid"/>
+  									<result property="fname" column="fname"/>
+  						</collection>
+  			</collection>
+  	</resultMap>
+  	<sql id="functionSql2">
+  			select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))
+  	</sql>
+  	
+  	<sql id="functionSql">
+  	  	  			select b.* from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) b where b.accordion=(select min(a.accordion) from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) a)
+  		<include refid="functionSql2"/>
+  	</sql>
+  	<select id="functionTree" parameterType="User" resultMap="FunctionTreeMap">
+  		select fid , fname ,parent_id, url,serial_num , accordion  from auth_function where parent_id= (select min(parent_id) from auth_function) 
+  		<include refid="functionSql"/>
+  	</select>
+
 </mapper>
