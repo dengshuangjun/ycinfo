@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.yc.entity.TempPage;
 import com.yc.entity.User;
 import com.yc.service.Userservice;
 import com.yc.utils.SessionAttributeKey;
@@ -45,8 +46,8 @@ public class UserHandler extends TreeHandler{
 	//获取分页信息
 	@RequestMapping("findUser.do")
 	@ResponseBody
-	public List<User> findUser(int page,int size,Model model) {
-		List<User> users = userservice.findPage(page,size);
+	public TempPage<User> findUser(int page,int rows) {
+		TempPage<User> users = userservice.findPage(page-1,rows);
 		return users;	
 	}
 	
@@ -60,7 +61,7 @@ public class UserHandler extends TreeHandler{
 	
 	//删除数据
 	@ResponseBody
-	@RequestMapping("removeUser")
+	@RequestMapping("removeUser.do")
 	public int removeUser(int uid){
 		System.out.println("要删除的id"+uid);
 		int result=userservice.deleteById(uid);

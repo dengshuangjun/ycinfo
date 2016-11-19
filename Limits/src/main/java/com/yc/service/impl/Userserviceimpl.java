@@ -40,7 +40,7 @@ public class Userserviceimpl implements Userservice {
 	}
 
 	@Override
-	public List<User> findPage(int page,int size) {
+	public TempPage<User> findPage(int page,int size) {
 		return userMapper.findPage(page,size);
 	}
 

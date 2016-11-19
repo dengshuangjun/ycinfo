@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.yc.entity.TempPage;
 import com.yc.entity.User;
 
 @Repository
@@ -48,7 +49,7 @@ public interface Userservice{
 	 * @param size
 	 * @return
 	 */
-	List<User> findPage(int page,int size);
+	TempPage<User> findPage(int page,int size);
 	
 
 }
