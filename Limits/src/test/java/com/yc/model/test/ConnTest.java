@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.yc.entity.User;
 import com.yc.service.Functionservice;
 import com.yc.service.Roleservice;
 import com.yc.service.Userservice;
@@ -73,5 +74,10 @@ public class ConnTest {
 	public void TestFindPages(){
 		System.out.println(userservice.findPage(0, 10));
 	}
-
+	@Test
+	public void TestFunctionTree(){
+		User user=new User();
+		user.setUid(1);
+		System.out.println(functionservice.functionTree(user));
+	}
 }

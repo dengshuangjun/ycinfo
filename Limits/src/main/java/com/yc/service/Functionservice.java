@@ -1,6 +1,9 @@
 package com.yc.service;
 
 import com.yc.entity.Function;
+import com.yc.entity.FunctionT;
+import com.yc.entity.FunctionTree;
+import com.yc.entity.User;
 
 import java.util.List;
 
@@ -27,5 +30,7 @@ public interface Functionservice{
      * @param id
      */
     int deleteById(int fid);
+
+	FunctionTree<FunctionT> functionTree(User user);
  
 }

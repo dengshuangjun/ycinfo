@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yc.entity.Function;
+import com.yc.entity.FunctionT;
+import com.yc.entity.FunctionTree;
 import com.yc.entity.User;
 import com.yc.service.Functionservice;
 
@@ -29,5 +31,10 @@ public class FunctionHandler extends TreeHandler{
 		System.out.println(rName);
 		List<Function> functions=functionservice.findnextFunction(rName,user.getUid());	
 		return functions;		
+	}
+	@RequestMapping("/functionTree.do")
+	@ResponseBody
+	public FunctionTree<FunctionT> functionTree(User user){
+		return functionservice.functionTree(user);
 	}
 }

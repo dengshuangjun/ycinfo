@@ -13,7 +13,7 @@
 			</tr>
 			</table>
 			<div class="easyui-panel" style="padding:5px">
-				<ul id="addUserPanl" class="easyui-tree" data-options="url:'function/functionTree.do,method:'get',animate:true,checkbox:true"></ul>
+				<ul id="addUserPanl" ></ul>
 			</div>
 	</div>  
 
@@ -87,5 +87,10 @@
 		}
 		function append(){
 			$('#userGridwin').window('open');
+			$('#addUserPanl').tree({  
+			    url:'function/functionTree.do' ,  
+			    animate:true,
+			    checkbox:true 
+			}); 
 		}
 		</script>
