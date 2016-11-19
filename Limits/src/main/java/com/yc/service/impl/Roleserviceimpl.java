@@ -34,4 +34,9 @@ public class Roleserviceimpl implements Roleservice {
 		return roleMapper.updateRole(role);
 	}
 
+	@Override
+	public List<Role> findRolesByPages(int page, int size) {
+		return roleMapper.findRolesByPages(page,size);
+	}
+
 }

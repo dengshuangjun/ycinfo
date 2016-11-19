@@ -6,7 +6,7 @@ import com.yc.entity.Role;
 public interface Roleservice{
 	
     /**
-     * 根据id查找用户角色
+     * 根据用户id查找属于他角色
      * @param id id
      * @return
      */
@@ -35,9 +35,12 @@ public interface Roleservice{
     int updateRole(Role role);
      
 
-  
-
-
-
+    /**
+	 * 分页查询
+	 * @param page
+	 * @param size
+	 * @return
+	 */
+    List<Role> findRolesByPages(int page,int size);
 
 }

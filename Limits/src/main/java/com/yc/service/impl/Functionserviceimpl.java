@@ -27,5 +27,6 @@ public class Functionserviceimpl implements Functionservice {
 	public int deleteById(int fid) {
 		return functionMapper.deleteById(fid);
 	}
+	
 
 }
