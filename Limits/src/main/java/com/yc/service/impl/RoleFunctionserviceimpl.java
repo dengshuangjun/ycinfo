@@ -25,4 +25,16 @@ public class RoleFunctionserviceimpl implements RoleFunctionservice {
 		return 0;
 	}
 
+	@Override
+	public boolean saveRoleFunction(RoleFunction roleFunction) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean saveRoleFunction(RoleFunction roleFunction, int[] function_id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -29,6 +29,7 @@ public class Functionserviceimpl implements Functionservice {
 	public int deleteById(int fid) {
 		return functionMapper.deleteById(fid);
 	}
+
 	@Override
 	public FunctionTree functionTree(User user) {
 		return functionMapper.functionTree(user);

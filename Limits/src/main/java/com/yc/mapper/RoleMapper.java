@@ -14,4 +14,6 @@ public interface RoleMapper {
 
 	int updateRole(Role role);
 
+	List<Role> findRolesByPages(int page, int size);
+
 }
