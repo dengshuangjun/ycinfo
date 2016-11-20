@@ -38,7 +38,7 @@ public class ConnTest {
 	@Autowired
 	private Functionservice functionservice;
 	
-	@Test
+/*	@Test
 	public void testConn() {
 		Connection con=null;
 		try {
@@ -73,11 +73,11 @@ public class ConnTest {
 	@Test
 	public void TestFindPages(){
 		System.out.println(userservice.findPage(0, 10));
-	}
+	}*/
 	@Test
 	public void TestFunctionTree(){
 		User user=new User();
-		user.setUid(1);
+		user.setUid(2);
 		System.out.println(functionservice.functionTree(user));
 	}
 }

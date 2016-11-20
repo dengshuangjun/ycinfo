@@ -1,41 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<!-- 以下是用来显示添加用户信息的面板 -->
-	<div id="userGridwin">
-			<form id="userform" method="post" action="front/addUser.do"  style="padding:10px 60px 20px 60px" >  
-			<table cellpadding="5">
-	    		<tr>
-	    			<td><label for="uname">用户名:</label> </td>
-	    			<td><input class="easyui-validatebox" type="text" name="uname" data-options="required:true,validType:'length[3,10]'" />  </td>
-	    		</tr>
-	    		<tr>  
-				      <td>  <label for="upwd">密  码:</label>  </td>
-				       <td> <input id="pwd" class="easyui-validatebox"  type="password"  name="upwd" data-options="required:true,validType:'length[6,16]'" /> </td>
-				    </tr>
-				  	<tr>  
-				       <td>  <label for="uupwd">确认密码:</label>  </td>
-				        <td> <input id="rpwd" class="easyui-validatebox"  type="password"  name="uupwd" data-options="required:true,validType:'length[6,16]'" validType="equals['#pwd']"  />  </td>
-				  </tr>
-	    	</table>
-	    	<div style="text-align:center;padding:5px">
-	    		<button onclick="submitForm()" >添加</button>
-	    		<button onclick="clearForm()" >重置</button>
-	    	
-	    </div>
-		</form> 
-	</div>  
-
-<!-- 以下是用来显示用户信息的数据表格 -->
+	<!-- 以下是用来显示用户信息的数据表格 -->
 <table id="userData"></table>  
 		<div id="userGrid_bar" style="padding:5px;height:auto">
 				<a href="javascript:void(0)" onclick="delUsers()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
 				<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="append()">添加</a>
-		</div>
+</div>
+	<div id="userGridwin">
+				<div style="padding:10px 60px 20px 60px">
+	    <form id="userform" class="easyui-form" method="post" data-options="novalidate:true" action="front/addUser.do" >
+	    	<table cellpadding="5">
+	    		<tr>
+	    			<td>用户名:</td>
+	    			<td><input id="uname" class="easyui-textbox" type="text" name="uname" data-options="required:true"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>密码:</td>
+	    			<td><input id="upwd" class="easyui-textbox" type="password" name="upwd" data-options="required:true"></input></td>
+	    		</tr>
+	    		<tr>
+	    			<td>确认密码:</td>
+	    			<td><input id="rpwd" class="easyui-textbox" type="password" name="rpwd" data-options="required:true"></input></td>
+	    		</tr>
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">添加</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
+	    </div>
+	    </div>
+	
+	</div>  
+
+
 		<script type="text/javascript">
-		$('#userGridwin').window({ 
+		$('#userGridwin').dialog({ 
 			title:"添加",
 		    width:450,  
-		    height:400,  
+		    height:200,  
 		    modal:false,
 		    closed:true,
 		    top:200,
@@ -100,8 +103,29 @@
 		function submitForm(){
 			$('#userform').form('submit',{
 				onSubmit:function(){
+					if($("#uname").val().length<2){
+						$.messager.alert('错误','用户名长度不能太短...');  
+						return false;
+					}else if($("#upwd").val()==""){
+						$.messager.alert('错误','密码不能为空...');  
+						return false;
+					}else if($("#upwd").val()!=$("#rpwd").val()){
+						$.messager.alert('错误','密码输入不一致...');  
+						return false;
+					}
+					return true;
+				},
+				success:function(data){
+					if(data>0){
+						$.messager.show({
+							title:'成功提示',
+							msg:'添加成功',
+							timeout:5000,
+							showType:'slide'
+						});
+						$('#userData').datagrid("reload");
+					}
 					
-					return $(this).form('enableValidation').form('validate');
 				}
 			});
 		}

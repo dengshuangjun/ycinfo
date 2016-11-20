@@ -51,7 +51,10 @@ public class UserHandler extends TreeHandler{
 	//添加数据
 	@RequestMapping("addUser.do")
 	@ResponseBody
-	public int addUser(User user) {
+	public int addUser(String uname,String upwd) {
+		User user=new User();
+		user.setUname(uname);
+		user.setUpwd(upwd);
 		int result = userservice.save(user);
 		return result;	
 	}
