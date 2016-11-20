@@ -33,10 +33,6 @@ public class LoginFilter implements Filter {
 		}else{
 			arg2.doFilter(arg0, arg1);
 		}
-			
-		
-	
-		
 	}
 
 	@Override

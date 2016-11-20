@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.entity.Function;
-import com.yc.entity.FunctionT;
 import com.yc.entity.FunctionTree;
 import com.yc.entity.User;
 import com.yc.mapper.FunctionMapper;
@@ -31,7 +30,7 @@ public class Functionserviceimpl implements Functionservice {
 		return functionMapper.deleteById(fid);
 	}
 	@Override
-	public FunctionTree<FunctionT> functionTree(User user) {
+	public FunctionTree functionTree(User user) {
 		return functionMapper.functionTree(user);
 	}
 

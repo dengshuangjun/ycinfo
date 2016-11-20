@@ -3,12 +3,13 @@ package com.yc.entity;
 import java.io.Serializable;
 import java.util.List;
 
-public class FunctionTree<T> implements Serializable {
+public class FunctionTree implements Serializable {
 
 	private static final long serialVersionUID = -4041911414004494063L;
+	
 	private int id;
 	private String text;
-	private List<T> children;
+	private List<FunctionTree> children;
 	public int getId() {
 		return id;
 	}
@@ -21,10 +22,10 @@ public class FunctionTree<T> implements Serializable {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public List<T> getChildren() {
+	public List<FunctionTree> getChildren() {
 		return children;
 	}
-	public void setChildren(List<T> children) {
+	public void setChildren(List<FunctionTree> children) {
 		this.children = children;
 	}
 	@Override

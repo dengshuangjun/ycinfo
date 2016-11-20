@@ -2,19 +2,27 @@
 	pageEncoding="UTF-8"%>
 	<!-- 以下是用来显示添加用户信息的面板 -->
 	<div id="userGridwin">
+			<form id="userform" method="post" action="front/addUser.do"  style="padding:10px 60px 20px 60px" >  
 			<table cellpadding="5">
-			<tr>
-				<td>用户名:</td>
-				<td><input class="easyui-validatebox textbox" data-options="required:true,validType:'length[3,10]'"></td>
-			</tr>
-			<tr>
-				<td>密码:</td>
-				<td><input type="password" class="easyui-validatebox textbox" data-options="required:true,validType:'length[3,10]'"></td>
-			</tr>
-			</table>
-			<div class="easyui-panel" style="padding:5px">
-				<ul id="addUserPanl" ></ul>
-			</div>
+	    		<tr>
+	    			<td><label for="uname">用户名:</label> </td>
+	    			<td><input class="easyui-validatebox" type="text" name="uname" data-options="required:true,validType:'length[3,10]'" />  </td>
+	    		</tr>
+	    		<tr>  
+				      <td>  <label for="upwd">密  码:</label>  </td>
+				       <td> <input id="pwd" class="easyui-validatebox"  type="password"  name="upwd" data-options="required:true,validType:'length[6,16]'" /> </td>
+				    </tr>
+				  	<tr>  
+				       <td>  <label for="uupwd">确认密码:</label>  </td>
+				        <td> <input id="rpwd" class="easyui-validatebox"  type="password"  name="uupwd" data-options="required:true,validType:'length[6,16]'" validType="equals['#pwd']"  />  </td>
+				  </tr>
+	    	</table>
+	    	<div style="text-align:center;padding:5px">
+	    		<button onclick="submitForm()" >添加</button>
+	    		<button onclick="clearForm()" >重置</button>
+	    	
+	    </div>
+		</form> 
 	</div>  
 
 <!-- 以下是用来显示用户信息的数据表格 -->
@@ -87,10 +95,17 @@
 		}
 		function append(){
 			$('#userGridwin').window('open');
-			$('#addUserPanl').tree({  
-			    url:'function/functionTree.do' ,  
-			    animate:true,
-			    checkbox:true 
-			}); 
+		
+		}
+		function submitForm(){
+			$('#userform').form('submit',{
+				onSubmit:function(){
+					
+					return $(this).form('enableValidation').form('validate');
+				}
+			});
+		}
+		function clearForm(){
+			$('#userform').form('clear');
 		}
 		</script>

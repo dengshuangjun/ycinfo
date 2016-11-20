@@ -1,7 +1,6 @@
 package com.yc.service;
 
 import com.yc.entity.Function;
-import com.yc.entity.FunctionT;
 import com.yc.entity.FunctionTree;
 import com.yc.entity.User;
 
@@ -31,6 +30,6 @@ public interface Functionservice{
      */
     int deleteById(int fid);
 
-	FunctionTree<FunctionT> functionTree(User user);
+	FunctionTree functionTree(User user);
  
 }
