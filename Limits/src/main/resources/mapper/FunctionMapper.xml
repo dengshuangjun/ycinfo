@@ -37,29 +37,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		delete from auth_function where fid=#{fid}
   	</delete>
   	
-  	<resultMap type="FunctionTree" id="FunctionTreeMap" >
+  	<resultMap id="FunctionTreeMap"  type="FunctionTree"  >
   			<id property="id"  column="fid"/>
   			<result property="text" column="fname"/>
-  			<collection property="children"  column="fid" javaType="FunctionT">
-  						<id property="fid"  column="fid"/>
-  						<result property="fname" column="fname"/>
-  						<collection property="children"  column="fid" javaType="FunctionT">
-  									<id property="fid"  column="fid"/>
-  									<result property="fname" column="fname"/>
-  						</collection>
+  			<collection property="children"  column="uid"  ofType="FunctionTree" >
+  						<id property="id"  column="fid"/>
+  						<result property="text" column="fname"/>
+  						<collection property="children"  column="fid"  ofType="FunctionTree"  >
+  									<id property="id"  column="fid"/>
+  									<result property="text" column="fname"/>
+  						</collection> 
+  						
   			</collection>
   	</resultMap>
-  	<sql id="functionSql2">
-  			select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))
-  	</sql>
-  	
-  	<sql id="functionSql">
-  	  	  			select b.* from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) b where b.accordion=(select min(a.accordion) from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) a)
-  		<include refid="functionSql2"/>
-  	</sql>
-  	<select id="functionTree" parameterType="User" resultMap="FunctionTreeMap">
-  		select fid , fname ,parent_id, url,serial_num , accordion  from auth_function where parent_id= (select min(parent_id) from auth_function) 
-  		<include refid="functionSql"/>
+  	<select id="functionTree"  parameterType="int"  resultMap="FunctionTreeMap">
+  		 select * from 
+		(select * from auth_function where parent_id not in (select fid from auth_function)) x
+		left join
+		(select b.* from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) b where b.accordion=(select min(a.accordion) from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) a)) y
+		on x.fid=y.parent_id left join 
+		(select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) z on y.fid=z.parent_id
   	</select>
-
+	
 </mapper>

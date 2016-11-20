@@ -3,7 +3,6 @@ package com.yc.mapper;
 import java.util.List;
 
 import com.yc.entity.Function;
-import com.yc.entity.FunctionT;
 import com.yc.entity.FunctionTree;
 import com.yc.entity.User;
 
@@ -16,6 +15,6 @@ public interface FunctionMapper {
 	
 	List<Function> findnextFunction(String rName,int uid);
 
-	FunctionTree<FunctionT> functionTree(User user);
+	FunctionTree functionTree(User user);
 
 }

@@ -17,6 +17,7 @@ public class User implements Serializable {
     private String upwd;
     private String registertime;
     private String updatetime;
+    
 	public int getUid() {
 		return uid;
 	}
