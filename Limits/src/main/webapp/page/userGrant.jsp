@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	
 	<div class="easyui-layout" data-options="fit:true,border:false"><table id="dg"></table></div>
 	
 	<script type="text/javascript">

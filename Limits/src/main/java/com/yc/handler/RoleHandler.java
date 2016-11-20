@@ -27,4 +27,9 @@ public class RoleHandler extends TreeHandler{
 		List<Role> roles=roleservice.findRolesById(user.getUid());		
 		return roles;		
 	}
+	@RequestMapping("/findRolesByPages.do")
+	@ResponseBody
+	public List<Role> findRolesByPages(int page, int rows){
+		return roleservice.findRolesByPages(page-1,rows);
+	}
 }
