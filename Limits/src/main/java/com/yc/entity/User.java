@@ -20,6 +20,9 @@ public class User implements Serializable {
 	public int getUid() {
 		return uid;
 	}
+	public int getUids() {
+		return uid;
+	}
 	public void setUid(int uid) {
 		this.uid = uid;
 	}

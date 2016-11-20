@@ -2,10 +2,18 @@ package com.yc.service.impl;
 
 import java.util.List;
 
-import com.yc.entity.UserRole;
-import com.yc.service.UserRoleservice;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.yc.entity.TempPage;
+import com.yc.entity.UserRole;
+import com.yc.mapper.UserMapper;
+import com.yc.mapper.UserRoleMapper;
+import com.yc.service.UserRoleservice;
+@Service("userRoleservice")
 public class UserRoleserviceimpl implements UserRoleservice {
+	@Autowired
+	private UserRoleMapper userRoleMapper;
 
 	@Override
 	public int updateUserRole(UserRole userRole) {
@@ -20,11 +28,6 @@ public class UserRoleserviceimpl implements UserRoleservice {
 		return null;
 	}
 
-	@Override
-	public List<UserRole> findUserRoles(int page, int size) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<UserRole> findUserRoleByUserId(int uid) {
@@ -44,6 +47,24 @@ public class UserRoleserviceimpl implements UserRoleservice {
 	public boolean saveUserRole(UserRole userRole, int[] role_id) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public TempPage<UserRole> findUserRoles(int page, int size) {
+		return userRoleMapper.findUserRoles(page,size);
+	}
+
+
+	@Override
+	public int deleteById(int id) {
+		return userRoleMapper.deleteById(id);
+	}
+
+
+	@Override
+	public List<UserRole> findRoleByuid(int user_id) {
+		return userRoleMapper.findRoleByuid(user_id);
 	}
 
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+
+<mapper namespace="com.yc.mapper.UserRoleMapper">
+	<cache />
+	<resultMap type="TempPage"  id="TempPageMap" >
+			<id column="total" property="total"/>
+			<collection property="rows" column="id"  ofType="UserRole">
+					<id column="id" property="id"/>
+					<result column="uname" property="uname"/>
+					<result column="rname" property="rname"/>
+			</collection>
+	</resultMap>
+	
+	<select id="findUserRoles" parameterType="int" resultMap="TempPageMap">		
+		select (select count(1) from auth_user_role) total,a.id,u.uname,r.rname from auth_user_role a left join auth_user u on a.user_id=u.uid left join auth_role r on a.role_id=r.rid limit #{0},#{1}
+	</select>
+	
+	
+	<delete id="deleteById" parameterType="int">
+  		delete from auth_user_role where id=#{id}
+  	</delete>
+  	
+  	<select id="findRoleByuid" parameterType="int" resultType="UserRole">
+		select a.id,r.rname from auth_user_role a left join auth_role r on a.role_id=r.rid where a.user_id=#{user_id}
+	</select>
+</mapper>
