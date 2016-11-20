@@ -2,6 +2,8 @@ package com.yc.service;
 
 import java.util.List;
 
+import com.yc.entity.TempPage;
+import com.yc.entity.User;
 import com.yc.entity.UserRole;
 
 public interface UserRoleservice {
@@ -27,7 +29,7 @@ public interface UserRoleservice {
      * @param size
      * @return
      */
-    List<UserRole> findUserRoles(int page,int size);
+    TempPage<UserRole> findUserRoles(int page,int size);
 
     /**
      * 根据userId查询用户角色
@@ -47,4 +49,18 @@ public interface UserRoleservice {
      * @param userRoles 用户角色对应关系集合
      */
     boolean saveUserRole(UserRole userRole,int[] role_id);
+
+    /**
+     * 根据id删除用户角色关系
+     * @param id
+     * @return
+     */
+	int deleteById(int id);
+
+	/**
+	 * 根据uid来查询该用户的角色信息
+	 * @param user_id
+	 * @return
+	 */
+	List<UserRole> findRoleByuid(int user_id);
 }

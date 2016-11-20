@@ -3,9 +3,7 @@ package com.yc.entity;
 
 import java.io.Serializable;
 
-/**
- * Created by dello on 2016/7/27.
- */
+
 public class UserRole implements Serializable {
     /**
 	 * 
@@ -14,8 +12,13 @@ public class UserRole implements Serializable {
 	private int id;
     private int role_id;
     private int user_id;
+    private String rname;
+    private String uname;
     
 	public int getId() {
+		return id;
+	}
+	public int getIds() {
 		return id;
 	}
 	public void setId(int id) {
@@ -33,9 +36,22 @@ public class UserRole implements Serializable {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
+	
+	public String getRname() {
+		return rname;
+	}
+	public void setRname(String rname) {
+		this.rname = rname;
+	}
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 	@Override
 	public String toString() {
 		return "UserRole [id=" + id + ", role_id=" + role_id + ", user_id="
-				+ user_id + "]";
+				+ user_id + ", rname=" + rname + ", uname=" + uname + "]";
 	}
 }

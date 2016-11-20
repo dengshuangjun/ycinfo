@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.yc.entity.User;
 import com.yc.service.Functionservice;
 import com.yc.service.Roleservice;
+import com.yc.service.UserRoleservice;
 import com.yc.service.Userservice;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,6 +38,9 @@ public class ConnTest {
 	
 	@Autowired
 	private Functionservice functionservice;
+	
+	@Autowired
+	private UserRoleservice userRoleservice;
 	
 /*	@Test
 	public void testConn() {
@@ -79,5 +83,15 @@ public class ConnTest {
 		User user=new User();
 		user.setUid(2);
 		System.out.println(functionservice.functionTree(user));
+	}
+	
+	@Test
+	public void TestfindUserRoles(){
+		System.out.println(userRoleservice.findUserRoles(0,10));
+	}
+	
+	@Test
+	public void TestfindRoleByuid(){
+		System.out.println(userRoleservice.findRoleByuid(1));
 	}
 }

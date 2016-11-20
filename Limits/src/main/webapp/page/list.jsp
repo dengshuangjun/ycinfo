@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="easyui/css/demo.css">
 		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 		<script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="easyui/js/datagrid-detailview.js"></script>
 		<script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
 		<script type="text/javascript" src="js/ajaxfileupload.js"></script>
 		<script type="text/javascript" >
