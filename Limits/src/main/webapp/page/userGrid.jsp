@@ -6,7 +6,7 @@
 		<div id="userGrid_bar" style="padding:5px;height:auto">
 				<a href="javascript:void(0)" onclick="delUsers()" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
 				<a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="append()">添加</a>
-</div>
+		</div>
 	<div id="userGridwin">
 				<div style="padding:10px 60px 20px 60px">
 	    <form id="userform" class="easyui-form" method="post" data-options="novalidate:true" action="front/addUser.do" >
@@ -26,8 +26,8 @@
 	    	</table>
 	    </form>
 	    <div style="text-align:center;padding:5px">
-	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">添加</a>
-	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitUserForm()">添加</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearUserForm()">重置</a>
 	    </div>
 	    </div>
 	
@@ -39,10 +39,8 @@
 			title:"添加",
 		    width:450,  
 		    height:200,  
-		    modal:false,
+		    modal:true,
 		    closed:true,
-		    top:200,
-		    left:800
 		   
 		});
 		//var options=$('#center_content').panel('options');
@@ -97,10 +95,10 @@
 			}
 		}
 		function append(){
-			$('#userGridwin').window('open');
+			$('#userGridwin').dialog('open');
 		
 		}
-		function submitForm(){
+		function submitUserForm(){
 			$('#userform').form('submit',{
 				onSubmit:function(){
 					if($("#uname").val().length<2){
@@ -129,7 +127,7 @@
 				}
 			});
 		}
-		function clearForm(){
+		function clearUserForm(){
 			$('#userform').form('clear');
 		}
 		</script>

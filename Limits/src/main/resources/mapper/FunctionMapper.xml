@@ -41,22 +41,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   			<id property="id"  column="fid"/>
   			<result property="text" column="fname"/>
   			<collection property="children"  column="uid"  ofType="FunctionTree" >
-  						<id property="id"  column="fid"/>
-  						<result property="text" column="fname"/>
-  						<collection property="children"  column="fid"  ofType="FunctionTree"  >
-  									<id property="id"  column="fid"/>
-  									<result property="text" column="fname"/>
+  						<id property="id"  column="fids"/>
+  						<result property="text" column="fnames"/>
+  						<collection property="children"  column="uid"  ofType="FunctionTree"  >
+  									<id property="id"  column="fidss"/>
+  									<result property="text" column="fnamess"/>
   						</collection> 
   						
   			</collection>
   	</resultMap>
   	<select id="functionTree"  parameterType="int"  resultMap="FunctionTreeMap">
-  		 select * from 
-		(select * from auth_function where parent_id not in (select fid from auth_function)) x
+  		 select  * from 
+		(select fid,fname,parent_id from auth_function where parent_id not in (select fid from auth_function)) x
 		left join
-		(select b.* from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) b where b.accordion=(select min(a.accordion) from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) a)) y
-		on x.fid=y.parent_id left join 
-		(select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) z on y.fid=z.parent_id
+		(select b.fid fids,b.fname fnames,b.parent_id parent_ids from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) b where b.accordion=(select min(a.accordion) from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) a)) y
+		on x.fid=y.parent_ids left join 
+		(select fid fidss,fname fnamess,parent_id parent_idss from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) z on y.fids=z.parent_idss
   	</select>
 	
 </mapper>

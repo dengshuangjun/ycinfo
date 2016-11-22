@@ -35,11 +35,11 @@ public interface RoleFunctionservice{
      * @param roleFunctions
      */
     boolean saveRoleFunction(RoleFunction roleFunction);
-
+   
     /**
      * 批量保存角色功能对应关系
      * @param userRoles 用户角色对应关系集合
      */
-    boolean saveRoleFunction(RoleFunction roleFunction,int[] function_id);
+    int  saveRoleFunction(List<RoleFunction> role_Function_list);
 
 }

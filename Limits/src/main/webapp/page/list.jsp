@@ -19,7 +19,7 @@
 	        $.ajax({  
 	            type : 'POST',  
 	            dataType : "json",  
-	            url : '/Limits/list/Roles.do',  
+	            url : 'list/Roles.do',  
 	            success : function(data) {  
 	            	 $.each(data, function(i, n) {//加载父类节点即一级菜单  
 		                    	 $('#accordions').accordion('add', {  
@@ -44,7 +44,7 @@
 						} catch (e) {
 							$('ul[name="'+title+'"]').tree({
 		            			method:'GET',
-			                    url: '/Limits/function/Functions.do?rName='+title,
+			                    url: 'function/Functions.do?rName='+title,
 			                    onClick: function(node){
 			                		//alert(node.text); 
 			                		/* 点击子节点中间区域加载刷新 */
@@ -63,7 +63,6 @@
 	        });
 		});
 
-				
 		</script>
  	</head>
  			

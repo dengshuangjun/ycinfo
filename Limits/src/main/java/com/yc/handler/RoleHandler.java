@@ -32,4 +32,17 @@ public class RoleHandler extends TreeHandler{
 	public List<Role> findRolesByPages(int page, int rows){
 		return roleservice.findRolesByPages(page-1,rows);
 	}
+	@RequestMapping("/delRole.do")
+	@ResponseBody
+	public int delRole(int rid){
+		return roleservice.deleteRoleById(rid);
+	}
+	@RequestMapping("/addRole.do")
+	@ResponseBody
+	public boolean addRole(String fids,String rname){
+		System.out.println(fids);
+		boolean result1= roleservice.addRole(fids,rname);
+		
+		return result1;
+	}
 }

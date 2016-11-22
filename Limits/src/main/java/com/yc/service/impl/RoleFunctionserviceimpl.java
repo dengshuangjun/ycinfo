@@ -2,11 +2,19 @@ package com.yc.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.yc.entity.RoleFunction;
+import com.yc.mapper.RoleFunctionMapper;
+import com.yc.mapper.RoleMapper;
 import com.yc.service.RoleFunctionservice;
-
+@Service("roleFunctionservice")
 public class RoleFunctionserviceimpl implements RoleFunctionservice {
-
+	
+	@Autowired
+	private RoleFunctionMapper roleFunctionMapper;
+	
 	@Override
 	public RoleFunction findRoleFunctionById(int id) {
 		// TODO Auto-generated method stub
@@ -28,13 +36,17 @@ public class RoleFunctionserviceimpl implements RoleFunctionservice {
 	@Override
 	public boolean saveRoleFunction(RoleFunction roleFunction) {
 		// TODO Auto-generated method stub
-		return false;
+//		return roleFunctionMapper.saveRoleFunction(roleFunction);
+		return true;
 	}
 
 	@Override
-	public boolean saveRoleFunction(RoleFunction roleFunction, int[] function_id) {
-		// TODO Auto-generated method stub
-		return false;
+	public int saveRoleFunction(List<RoleFunction> role_Function_list) {
+		
+		
+		return roleFunctionMapper.saveRoleFunction(role_Function_list);
 	}
+	
+	
 
 }

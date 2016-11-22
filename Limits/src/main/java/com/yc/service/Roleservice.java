@@ -15,7 +15,7 @@ public interface Roleservice{
  
 
     /**
-     *  保存角色 目的可以将主键带出来。
+     *  保存角色 
      * @param role role角色
      */
     int saveRole(Role role);
@@ -42,5 +42,14 @@ public interface Roleservice{
 	 * @return
 	 */
     List<Role> findRolesByPages(int page,int size);
+
+
+    /**
+     * 添加角色，同时给角色赋予指定的权限
+     * @param fids
+     * @param rname
+     * @return
+     */
+	boolean addRole(String fids, String rname);
 
 }

@@ -1,5 +1,6 @@
 package com.yc.handler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,9 @@ public class FunctionHandler extends TreeHandler{
 	}
 	@RequestMapping("/functionTree.do")
 	@ResponseBody
-	public FunctionTree functionTree(User user){
-		return functionservice.functionTree(user);
+	public List<FunctionTree> functionTree(User user){
+		List<FunctionTree> list=new ArrayList<FunctionTree>();
+		list.add(functionservice.functionTree(user));
+		return list ;
 	}
 }

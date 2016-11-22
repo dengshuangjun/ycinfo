@@ -10,8 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(select min(a.accordion) from (select * from auth_function where fid in (select function_id from auth_role_function where role_id in (select role_id from auth_user_role where user_id=#{uid}))) a)
 	</select>
 	
-	<insert id="saveRole" parameterType="Role" >
-	    insert into auth_role(rid, rname,addTime,updateTime) values(null,#{rname},str_to_date('#{addTime}','%Y-%m-%d'),null)
+	<insert id="saveRole" parameterType="Role"  useGeneratedKeys="true" keyProperty="rid">
+	    insert into auth_role(rid, rname,addTime,updateTime) values(null,#{rname},now(),null)
     </insert>
     
     <delete id="deleteRoleById" parameterType="int">

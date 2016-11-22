@@ -16,4 +16,6 @@ public interface RoleMapper {
 
 	List<Role> findRolesByPages(int page, int size);
 
+	
+
 }

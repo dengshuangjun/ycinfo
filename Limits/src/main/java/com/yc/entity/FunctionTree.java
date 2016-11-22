@@ -9,7 +9,15 @@ public class FunctionTree implements Serializable {
 	
 	private int id;
 	private String text;
+	private Boolean checked;
 	private List<FunctionTree> children;
+	
+	public Boolean getChecked() {
+		return checked;
+	}
+	public void setChecked(Boolean checked) {
+		this.checked = checked;
+	}
 	public int getId() {
 		return id;
 	}
